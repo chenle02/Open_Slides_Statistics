@@ -8,7 +8,8 @@
 4. The course page can be found here: 
    * [Math 362 Mathematical Statistics II at Emory](http://math.emory.edu/~lchen41/teaching/2020_Spring/math362_2020_Spring.html)
    * [Math 362 Mathematical Statistics II, mirror (refined) at Auburn](http://webhome.auburn.edu/~lzc0090/teaching/2021_Spring_Math362/)
-
+5. All slides and compiling methods are in the folder [slides](./slides)
+ 
 # Acknowledgment
 * Professor and department chair [Jim Nagy](http://www.math.emory.edu/~nagy/) for his encouragement and support.
 * Professor [Bree Ettinger](http://www.math.emory.edu/~betting/) for her help in the course.

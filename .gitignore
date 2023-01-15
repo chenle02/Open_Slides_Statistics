@@ -12,3 +12,8 @@
 *.fls
 *.nav
 *.vrb
+
+slides/Codes/__pycache__
+slides/Codes/.RData
+slides/Codes/.Rhistory
+slides/Codes/.xdp_Wildlife.6FG6E0
