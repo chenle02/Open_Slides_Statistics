@@ -4,7 +4,7 @@
 2. This second part of the sequence of probability and statistics course that covers
    the statistics part. The text book is:
    *  "An Introduction to Mathematical Statistics", by Richard J. Larsen and Morris L. Marx, 6th Ed.
-       [Textbook](./Texbook.png "An Introduction to Mathematical Statistics")
+   *  ![Textbook](./Texbook.png "An Introduction to Mathematical Statistics")
 4. The course page can be found here: 
    * [Math 362 Mathematical Statistics II at Emory](http://math.emory.edu/~lchen41/teaching/2020_Spring/math362_2020_Spring.html)
    * [Math 362 Mathematical Statistics II, mirror (refined) at Auburn](http://webhome.auburn.edu/~lzc0090/teaching/2021_Spring_Math362/)
