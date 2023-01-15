@@ -1,0 +1,56 @@
+\mySection{14.1 Introduction}
+%-------------- start slide -------------------------------%{{{ Intro
+\begin{frame}[fragile]
+	\frametitle{Nonparametric statistics}
+		% \bigskip
+	\begin{itemize}
+		\item \normalsize {\it Distribution-free methods} : do not rely on assumptions that the data are drawn from a given parametric family of probability distributions. \\[2em]
+		\item \normalsize {\it Nonparametric statistics}: a statistic is defined to be a function on a sample and there is no dependency on any parameters, such as
+		\bigskip
+		\begin{itemize}
+			\item \normalsize {\it Order statistics}
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ Power of Test
+\begin{frame}
+	\frametitle{Nonparametric vs. Parametric methods \\ \small -- Power of Test}
+\begin{center}
+	\includegraphics[scale=0.25]{Codes/nonparametric_power1.png}
+	\includegraphics[scale=0.25]{Codes/nonparametric_power2.png}
+	\includegraphics[scale=0.25]{Codes/nonparametric_power3.png}
+\end{center}
+\vfill
+
+\begin{itemize}
+	\item Solid line: one-sample t-test\hfill (parametric test)\\[1em]
+	\item Dashed lines: the sign test\hfill (nonparametric test)
+\end{itemize}
+\end{frame}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ Comparison
+\begin{frame}[fragile]
+	\frametitle{Nonparametric vs. Parametric methods}
+	Nonparametric methods usually produce\\[1em]
+	\begin{itemize}
+		\item Greater variance in point estimation
+		\item Less power in hypothesis-testing
+		\item Wider confidence intervals
+		\item Lower probability of correct selection (in ranking and selection)
+		\item Higher risk (in decision theory)
+	\end{itemize}
+	\vfill
+
+Hence, use nonparametric methods only when
+\vfill
+
+\begin{center}
+\begin{minipage}{0.62\textwidth}
+	\centering
+	The underlying assumptions for the probability distributions are seriously doubtful.
+\end{minipage}
+\end{center}
+\end{frame}
+%-------------- end slide -------------------------------%}}}
+

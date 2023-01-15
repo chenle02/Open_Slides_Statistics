@@ -1,0 +1,208 @@
+\mySection{9.5  Confidence Intervals for the Two-Sample Problem}
+%-------------- start slide -------------------------------%{{{ 9.48
+\begin{frame}
+	% {\S\: 9.5 Confidence Intervals for the Two-Sample Problem}
+	\centering
+	Similar to the hypothesis test ...
+\end{frame}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 9.49
+\begin{frame}
+\begin{enumerate}
+\item Let $X_1,\cdots, X_n$ be a random sample of size $n$ from $N(\mu_X,\sigma^2_X)$.	\\[1em]
+\item Let $Y_1,\cdots, Y_m$ be a random sample of size $m$ from $N(\mu_Y,\sigma^2_Y)$.
+\vfill
+\item[Prob. 1] Find the $100(1-\alpha)\%$ C.I. for $\mu_X-\mu_Y$\\[2em]
+\item[]When both $\sigma^2_X$ and $\sigma^2_Y$ are known\\[1em]
+\item[]When $\sigma^2_X = \sigma^2_Y=\sigma^2$, but is unknown\\[1em]
+\item[]When $\sigma^2_X \ne \sigma^2_Y$, both are unknown
+\pause \hspace{3em}
+\vfill
+\item[Prob. 2] Find the $100(1-\alpha)\%$ C.I. for $\sigma_X^2/\sigma_Y^2$, or $\sigma_X/\sigma_Y$\\[2em]
+\end{enumerate}
+\end{frame}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 9.50
+\begin{frame}
+\begin{enumerate}
+\item[Prob. 1-1] Find the $100(1-\alpha)\%$ C.I. for $\mu_X-\mu_Y$ with $\sigma^2_X$ and $\sigma^2_Y$ known.
+	\vfill
+\item[Sol.]
+	\[
+		\frac{\overline{X}-\overline{Y} - (\mu_X-\mu_Y)}{\sqrt{\frac{\sigma_X^2}{n} + \frac{\sigma_Y^2}{m} }}\sim N(0,1)
+	\]
+	\vfill
+\item[]
+	\[
+		\bbP \left(-z_{\alpha/2} \le \frac{\overline{X}-\overline{Y} - (\mu_X-\mu_Y)}{\sqrt{\frac{\sigma_X^2}{n} + \frac{\sigma_Y^2}{m} }}\le z_{\alpha/2}\right )=1-\alpha
+	\]
+	\[||\]
+	\[
+		\hspace{-3.5em}	\bbP \left(
+			(\overline{X}-\overline{Y})-z_{\alpha/2} \sqrt{\frac{\sigma_X^2}{n} + \frac{\sigma_Y^2}{m}}
+			\le  \mu_X-\mu_Y \le
+			(\overline{X}-\overline{Y})+z_{\alpha/2} \sqrt{\frac{\sigma_X^2}{n} + \frac{\sigma_Y^2}{m}}
+		\right )
+	\]
+	\vfill
+\item[]
+	\[
+		\left(
+			(\overline{x}-\overline{y})-z_{\alpha/2} \sqrt{\frac{\sigma_X^2}{n} + \frac{\sigma_Y^2}{m}}
+\quad,\quad
+(\overline{x}-\overline{y})+z_{\alpha/2} \sqrt{\frac{\sigma_X^2}{n} + \frac{\sigma_Y^2}{m}}
+\right )
+	\]
+	\myEnd
+\end{enumerate}
+\end{frame}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 9.51
+\begin{frame}
+\begin{enumerate}
+\item[Prob. 1-2] Find the $100(1-\alpha)\%$ C.I. for $\mu_X-\mu_Y$ when $\sigma^2_X = \sigma^2_Y=\sigma^2$ unknown
+	\vfill
+\item[Sol.]
+	\[
+		\frac{\overline{X}-\overline{Y} - (\mu_X-\mu_Y)}{S_p\sqrt{\frac 1n + \frac 1m}}\sim \text{Student t-distribution $(n+m-2)$}
+	\]
+	\vfill
+\item[]
+	\[
+		\bbP \left(-t_{\alpha/2,n+m-2} \le \frac{\overline{X}-\overline{Y} - (\mu_X-\mu_Y)}{S_p\sqrt{\frac 1n + \frac 1m}}\le t_{\alpha/2,n+m-2}\right ) = 1-\alpha
+	\]
+	\[||\]
+	\[
+		\hspace{-3.5em}	\bbP \left(
+			(\overline{X}-\overline{Y})-t_{\alpha/2,n+m-2} S_p\sqrt{\frac 1n + \frac 1m}
+			\le  \mu_X-\mu_Y \le
+			(\overline{X}-\overline{Y})+t_{\alpha/2,n+m-2} S_p\sqrt{\frac 1n + \frac 1m}
+		\right )
+	\]
+	\vfill
+\item[]
+	\[
+		\left(
+(\overline{x}-\overline{y})-t_{\alpha/2,n+m-2} s_p\sqrt{\frac 1n + \frac 1m}
+\quad,\quad
+(\overline{x}-\overline{y})+t_{\alpha/2,n+m-2} s_p\sqrt{\frac 1n + \frac 1m}
+\right )
+	\]
+	\myEnd
+\end{enumerate}
+\end{frame}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 9.52
+\begin{frame}
+\begin{enumerate}
+\item[Prob. 1-3] Find the $100(1-\alpha)\%$ C.I. for $\mu_X-\mu_Y$ when $\sigma^2_X \ne \sigma^2_Y$ unknown.
+	\vfill
+\item[Sol.]
+	\[
+		\frac{\overline{X}-\overline{Y} - (\mu_X-\mu_Y)}{\sqrt{\frac{S_X^2}{n} + \frac{S_Y^2}{m} }}\sim \text{Student t-distribution $(\nu)$}
+	\]
+	\vfill
+\item[]
+	\[
+		\bbP \left(-t_{\alpha/2,\nu} \le \frac{\overline{X}-\overline{Y} - (\mu_X-\mu_Y)}{\sqrt{\frac{S_X^2}{n} + \frac{S_Y^2}{m} }}\le t_{\alpha/2,\nu}\right ) \approx 1-\alpha
+	\]
+	\[||\]
+	\[
+		\hspace{-3.5em}	\bbP \left(
+			(\overline{X}-\overline{Y})-t_{\alpha/2,\nu} \sqrt{\frac{S_X^2}{n} + \frac{S_Y^2}{m}}
+			\le  \mu_X-\mu_Y \le
+			(\overline{X}-\overline{Y})+t_{\alpha/2,\nu} \sqrt{\frac{S_X^2}{n} + \frac{S_Y^2}{m}}
+		\right )
+	\]
+	\vfill
+\item[]
+	\[
+		\left(
+			(\overline{x}-\overline{y})-t_{\alpha/2,\nu} \sqrt{\frac{s_X^2}{n} + \frac{s_Y^2}{m}}
+\quad,\quad
+(\overline{x}-\overline{y})+t_{\alpha/2,\nu} \sqrt{\frac{s_X^2}{n} + \frac{s_Y^2}{m}}
+\right )
+	\]
+	\myEnd
+\end{enumerate}
+\end{frame}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 9.53
+\begin{frame}
+	\begin{enumerate}
+\item[Prob. 2] Find the $100(1-\alpha)\%$ C.I. for $\sigma_X^2/\sigma_Y^2$
+	\vfill
+\item[Sol 1.]
+	\[
+		\frac{S_X^2/\sigma_X^2}{S_Y^2/\sigma_Y^2} \sim \text{F-disribution $(n-1,m-1)$}
+	\]
+		\[
+		\bbP \left(F_{\alpha/2,n-1,m-1} \le\frac{S_X^2/\sigma_X^2}{S_Y^2/\sigma_Y^2}
+	\le F_{1-\alpha/2,n-1,m-1}\right) =1-\alpha
+	\]
+	\[||\]
+	\[
+		\hspace{-3.5em}	\bbP \left(
+			\frac{S_X^2}{S_Y^2}  \frac{1}{F_{1-\alpha/2,n-1,m-1}}
+			\le
+\frac{\sigma_X^2}{\sigma_Y^2}
+\le
+			\frac{S_X^2}{S_Y^2}  \frac{1}{F_{\alpha/2,n-1,m-1}}
+		\right )
+	\]
+\item[]
+	\vfill
+	\[
+		\left(
+			\frac{s_X^2}{s_Y^2}  \frac{1}{F_{1-\alpha/2,n-1,m-1}}
+			\quad,\quad
+			\frac{s_X^2}{s_Y^2}  \frac{1}{F_{\alpha/2,n-1,m-1}}
+		 \right )
+	\]
+\myEnd
+	\end{enumerate}
+\end{frame}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 9.54
+\begin{frame}
+
+	\begin{enumerate}
+		\item[Sol 2.] Or equivalently,
+	\[
+		\frac{S_Y^2/\sigma_Y^2}{S_X^2/\sigma_X^2} \sim \text{F-disribution $(m-1,n-1)$}
+	\]
+		\[
+		\bbP \left(F_{\alpha/2,m-1,n-1} \le\frac{S_Y^2/\sigma_Y^2}{S_X^2/\sigma_X^2}
+	\le F_{1-\alpha/2,m-1,n-1}\right) =1-\alpha
+	\]
+	\[||\]
+	\[
+		\hspace{-3.5em}	\bbP \left(
+			\frac{S_X^2}{S_Y^2}  F_{\alpha/2,m-1,n-1}
+			\le
+\frac{\sigma_X^2}{\sigma_Y^2}
+\le
+			\frac{S_X^2}{S_Y^2}  F_{1-\alpha/2,m-1,n-1}
+		\right )
+	\]
+	\vfill
+\item[]
+	\[
+		\left(
+			\frac{s_X^2}{s_Y^2}  {F_{\alpha/2,m-1,n-1}}
+			\quad,\quad
+			\frac{s_X^2}{s_Y^2}  {F_{1-\alpha/2,m-1,n-1}}
+		 \right )
+	\]
+\myEnd
+\vfill
+\item[Recall:]\hspace{3em} $\displaystyle F_{\alpha,m,n} = \frac{1}{F_{1-\alpha, n,m}}$
+	\end{enumerate}
+\end{frame}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 9.55
+\begin{frame}
+\centering
+	Examples from the book...
+\end{frame}
+%-------------- end slide -------------------------------%}}}

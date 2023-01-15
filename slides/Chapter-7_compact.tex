@@ -1,0 +1,48 @@
+\documentclass[compress,trans,9pt]{beamer}
+% \documentclass[9pt]{beamer}
+%\documentclass[compress,9pt,usenames,dvipsnames]{beamer}
+% \usepackage[utf8]{inputenc}
+% \includeonlyframes{current}
+\input{Common}
+
+\begin{document}
+
+\AtBeginSection[]
+  {
+     \begin{frame}<beamer>
+     \frametitle{Plan}
+     \tableofcontents[currentsection]
+     \end{frame}
+  }
+
+
+%-------------- start slide -------------------------------%{{{
+\begin{frame}[noframenumbering]
+  \titlepage
+\end{frame}
+%-------------- end slide -------------------------------%}}}
+
+
+% \begin{frame}{Outline}
+%   \tableofcontents
+%   % You might wish to add the option [pausesections]
+% \end{frame}
+
+\newcommand{\myChapter}{Chapter 7. Inference Based on The Normal Distribution}
+
+%-------------- start slide -------------------------------%{{{
+\begin{frame}
+\begin{center}
+\huge
+\myChapter
+\end{center}
+\end{frame}
+%-------------- end slide -------------------------------%}}}
+\input{Section_7-1}
+\input{Section_7-2}
+\input{Section_7-3}
+\input{Section_7-4}
+\input{Section_7-5}
+\end{document}
+
+

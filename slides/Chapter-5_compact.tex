@@ -1,0 +1,58 @@
+\documentclass[compress,trans,9pt]{beamer}
+% \documentclass[9pt]{beamer}
+%\documentclass[compress,9pt,usenames,dvipsnames]{beamer}
+% \usepackage[utf8]{inputenc}
+% \includeonlyframes{current}
+\input{Common}
+
+\begin{document}
+
+\AtBeginSection[]
+  {
+     \begin{frame}<beamer>
+     \frametitle{Plan}
+     \tableofcontents[currentsection]
+     \end{frame}
+  }
+
+
+%-------------- start slide -------------------------------%{{{
+\begin{frame}[noframenumbering]
+  \titlepage
+\end{frame}
+%-------------- end slide -------------------------------%}}}
+
+
+% \begin{frame}{Outline}
+%   \tableofcontents
+%   % You might wish to add the option [pausesections]
+% \end{frame}
+
+
+%-------------- start slide -------------------------------%{{{
+\begin{frame}
+\begin{center}
+\huge
+ Chapter 5: Estimation
+\end{center}
+\end{frame}
+%-------------- end slide -------------------------------%}}}
+
+\section{\S\: 5.1 Introduction}
+\input{Section_5-1}
+\section{\S\: 5.2 Estimating parameters: MLE and MME}
+\input{Section_5-2}
+\section{\S\: 5.3 Interval Estimation}
+% \input{Section_5-3}
+% \section{\S\: 5.4 Properties of Estimators}
+% \input{Section_5-4}
+% \section{\S\: 5.5 Minimum-Variance Estimators: The Cram\'er-Rao Lower Bound}
+% \input{Section_5-5}
+% \section{\S\: 5.6 Sufficient Estimators}
+% \input{Section_5-6}
+% \section{\S\: 5.7 Consistency}
+% \input{Section_5-7}
+% \section{\S\: 5.8 Bayesian Estimation}
+% \input{Section_5-8}
+\end{document}
+

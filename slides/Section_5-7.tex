@@ -1,0 +1,110 @@
+\mySection{5.7 Consistency}
+%-------------- start slide -------------------------------%{{{ 5.79
+\begin{frame}
+  % {\S\: 5.7 Consistency}
+
+ {\bf Definition.~} An estimator $\widehat\theta_n = h(W_1,\cdots,W_n)$ is said
+ to be \textcolor{yellow}{consistent} if it converges to $\theta$ {\it in probability}, i.e.,
+ for any $\epsilon>0$, \[
+		 \lim_{n\rightarrow\infty}\PP\left(|\widehat\theta_n-\theta|<\epsilon\right)=1.
+		 \] \vfill \pause Comment: In the $\epsilon$-$\delta$ language, the above
+		 \textcolor{yellow}{convergence in probability} says \[ \forall \epsilon>0,\: \forall
+				 \delta>0,\:  \exists n(\epsilon,\delta)>0, \: s.t. \: \forall n\ge
+				 n(\epsilon,\delta), \] \[
+		 \PP\left(|\widehat\theta_n-\theta|<\epsilon\right)>1-\delta.  \]
+\end{frame}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 5.80
+\begin{frame}
+ A useful tool to check convergence in probability is
+ \vfill
+
+ {\bf Theorem.~} (Chebyshev's inequality) Let $W$ be any r.v. with finite mean $\mu$ and variance $\sigma^2$. Then for any $\epsilon>0$
+ \[
+ \PP\left(|W-\mu|<\epsilon\right)\ge 1-\frac{\sigma^2}{\epsilon^2},
+ \]
+ or, equivalently,
+ \[
+ \PP\left(|W-\mu|\ge \epsilon\right)\le \frac{\sigma^2}{\epsilon^2}.
+ \]
+ \vfill
+ {Proof.} ... \myEnd
+\end{frame}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 5.81
+ \begin{frame}
+ As a consequence of Chebyshev's inequality, we have \\
+ \vfill
+ {\bf Proposition.~} The sample mean $\widehat\mu_n =\frac{1}{n}\sum_{i=1}^n W_i$ is consistent for $\E(W)=\mu$, provided that the population $W$ has finite mean $\mu$ and variance $\sigma^2$.
+ \vfill
+ Proof.~
+ \[
+ \E(\widehat \mu_n) = \mu \qquad \text{and} \qquad \Var(\widehat\mu_n)= \frac{\sigma^2}{n}.
+ \]
+%  For any $\epsilon>0$,
+ \[
+ \forall \epsilon>0,\quad
+ \PP\left(|\widehat\mu_n-\mu|\le \epsilon\right)\ge 1-\frac{\sigma^2}{n\epsilon^2}  \rightarrow 1.
+ \]
+ \myEnd
+ \end{frame}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 5.82
+\begin{frame}
+  \begin{enumerate}
+   \item[E.g. 1.~] Let $Y_1,\cdots, Y_n$ be a random sample of size $n$ from the uniform pdf $f_Y(y;\theta) = 1/\theta$, $y\in [0,\theta]$. Let $\widehat\theta_n =Y_{max}$. We know that $Y_{max}$ is biased. Is it consistent?
+   \vfill \pause
+   {\noindent\bf Sol.~} The c.d.f. of $Y$ is equal to $F_Y(y) = y/\theta$ for $y\in[0,\theta]$. \pause Hence,
+   \[
+   f_{Y_{max}}(y) = n F_{Y}(y)^{n-1} f_Y(y) = \frac{n y^{n-1}}{\theta^n}, \qquad y\in [0,\theta].
+   \] \pause
+   Therefore,
+   \begin{align*}
+    \bbP(|\widehat\theta_n -\theta|<\epsilon) & = \bbP(\theta-\epsilon< \widehat\theta_n < \theta+\epsilon)\\ \pause
+					      &= \int_{\theta-\epsilon}^\theta \frac{n y^{n-1}}{\theta^n }\ud y + \int_{\theta}^{\theta+\epsilon} 0 \ud y\\ \pause
+    &= 1- \left(\frac{\theta-\epsilon}{\theta}\right)^n \\ \pause
+    & \rightarrow 0 \quad \text{as $n\rightarrow\infty$.}
+   \end{align*}
+   \myEnd
+  \end{enumerate}
+ \end{frame}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 5.83
+\begin{frame}
+ \begin{enumerate}
+  \item[E.g. 2.~]  Suppose $Y_1 , Y_2 , \cdots, Y_n$ is a random sample from the
+exponential pdf, $f_Y (y; \lambda) = \lambda e^{-\lambda y}$, $y > 0$.
+Show that $\widehat\lambda_n = Y_1$ is not consistent for $\lambda$.
+\vfill
+ {\noindent\bf Sol.~}
+ To prove $\widehat\lambda_n$ is not consistent for $\lambda$, we need only to find out one $\epsilon>0$ such that the following limit does not hold:
+\begin{align}\label{E:573}
+\lim_{n\rightarrow\infty} \bbP\left(|\widehat\lambda_n -\lambda|<\epsilon\right)=1.
+\end{align} \pause
+We can choose $\epsilon = \lambda/m$ for any $m\ge 1$. Then
+\begin{align*}
+|\widehat\lambda_n - \lambda| \le \frac{\lambda}{m}
+& \quad\Longleftrightarrow\quad
+\left(1-\frac{1}{m}\right)\lambda \le \widehat\lambda_n \le \left(1+\frac{1}{m}\right)\lambda
+\\ \pause
+& \quad \Longrightarrow \quad
+\widehat\lambda_n \ge \left(1-\frac{1}{m}\right)\lambda.
+\end{align*}
+ \end{enumerate}
+\end{frame}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 5.84
+\begin{frame}
+\begin{enumerate}
+ \item[] Hence,
+\begin{align*}
+\bbP\left(|\widehat\lambda_n -\lambda|<\frac{\lambda}{m}\right)
+& \le \bbP\left(\widehat\lambda_n \ge \left(1-\frac{1}{m}\right)\lambda \right)\\ \pause
+& = \bbP\left(Y_1\ge \left(1-\frac{1}{m}\right)\lambda \right)\\ \pause
+&= \int_{\left(1-\frac{1}{m}\right)\lambda }^\infty \lambda e^{-\lambda y}\ud y\\ \pause
+&= e^{-\left(1-\frac{1}{m}\right)\lambda^2}<1.
+\end{align*}
+Therefore, the limit in \eqref{E:573} cannot hold. \myEnd
+\end{enumerate}
+\end{frame}
+%-------------- end slide -------------------------------%}}}

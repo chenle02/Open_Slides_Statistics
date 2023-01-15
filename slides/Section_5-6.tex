@@ -1,0 +1,148 @@
+\mySection{5.6 Sufficient Estimators}
+%-------------- start slide -------------------------------%{{{ 5.69
+\begin{frame}{\S\: 5.6 Sufficient Estimators}
+
+ {\bf Rationale:~} Let $\widehat{\theta}$ be an estimator to the unknown parameter $\theta$. Whether does $\widehat{\theta}$ contain all information about $\theta$? \\[1em] \pause
+ Equivalently, how can one reduce the random sample of size $n$, denoted by $(X_1,\cdots, X_n)$, to a function without losing any information about $\theta$?
+
+ \vfill
+ \pause
+
+ E.g., let's choose the function $h(X_1,\cdots,X_n):= \frac{1}{n}\sum_{i=1}^n X_i$, the sample mean. In many cases, $h(X_1,\cdots,X_n)$ contains all relevant information about the true mean $\E(X)$. In that case, $h(X_1,\cdots,X_n)$, as an estimator, is sufficient.
+
+ \end{frame}
+
+ \begin{frame}
+
+{\bf Definition.~} Let $(X_1,\cdots, X_n)$ be a random sample of size $n$ from a discrete population with a unknown parameter $\theta$, of which $\widehat{\theta}$ (resp. $\theta_e$) be an estimator (resp. estimate).
+We call $\widehat\theta$ and $\theta_e$ {\bf sufficient} if
+\begin{align}\label{E:Sufficency1}
+\tag{Sufficency-1}
+\PP\left(X_1=k_1,\cdots, X_n=k_n \: \bigg| \: \widehat\theta = \theta_e\right) = b(k_1,\cdots,k_n)
+\end{align}
+is a function that does not depend on $\theta$. \\[1em]
+In case for random sample $(Y_1,\cdots,Y_n)$ from the continuous population, \eqref{E:Sufficency1} should be
+\[
+f_{Y_1,\cdots,Y_n |\widehat\theta =\theta_e}\left(y_1,\cdots, y_n \: \bigg| \: \widehat\theta = \theta_e\right) = b(y_1,\cdots,y_n)
+\]
+\vfill
+Note: $\widehat\theta = h(X_1,\cdots, X_n)$ and $\theta_e=h(k_1,\cdots,k_n)$.\\
+\qquad or $\widehat\theta = h(Y_1,\cdots, Y_n)$ and $\theta_e=h(y_1,\cdots,y_n)$.
+\end{frame}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 5.70
+\begin{frame}
+Equivalently, \\[1em]
+
+{\bf Definition.~}  ... $\widehat\theta$ (or $\theta_e$) is {\bf sufficient} if the likelihood function can be factorized as:
+\begin{align}\label{E:Sufficency2}
+\tag{Sufficency-2}
+L(\theta) =
+\begin{cases}
+ \displaystyle \prod_{i=1}^n p_X(k_i;\theta) =g(\theta_e,\theta) \: b(k_1,\cdots,k_n) & \text{Discrete}\\[1em]
+ \displaystyle \prod_{i=1}^n f_Y(y_i;\theta)=g(\theta_e,\theta) \: b(y_1,\cdots,y_n)& \text{Continous}
+\end{cases}
+\end{align}
+where $g$ is a function of two arguments only and $b$ is a function that does not depend on $\theta$.
+
+\end{frame}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 5.71
+\begin{frame}
+\begin{enumerate}
+ \item[E.g. 1.] A random sample of size $n$ from Bernoulli(P). $\widehat p = \sum_{i=1}^n X_i$. Check sufficiency of $\widehat p$ for $p$ by \eqref{E:Sufficency1}:
+ \vfill \pause
+ Case I: If $k_1,\cdots,k_n\in\{0,1\}$ such that $\sum_{i=1}^n k_i\ne c$, then
+ \[
+ \PP\left(X_1=k_1,\cdots,X_n=k_n \:\big| \: \widehat p = c \right) = 0.
+ \]\pause
+ \vfill
+ Case II: If $k_1,\cdots,k_n\in\{0,1\}$ such that $\sum_{i=1}^n k_i=c$, then
+\end{enumerate}
+\end{frame}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 5.72
+\begin{frame}
+ \begin{align*}
+  \PP&\left(X_1=k_1,\cdots,X_n=k_n \:\big| \: \widehat p = c \right)\\\pause
+  &= \frac{\PP\left(X_1=k_1,\cdots,X_n=k_n, \widehat p = c \right)}{\PP(\widehat p = c)}\\\pause
+  &= \frac{\PP\left(X_1=k_1,\cdots,X_n=k_n, X_n + \sum_{i=1}^{n-1} X_i = c \right)}{\PP\left(\sum_{i=1}^n X_i = c\right)}\\ \pause
+  &= \frac{\PP\left(X_1=k_1,\cdots,X_{n-1}=k_{n-1}, X_n = c -\sum_{i=1}^{n-1} k_i  \right)}{\PP\left(\sum_{i=1}^n X_i = c\right)}\\ \pause
+  &=
+  \frac{\left(\prod_{i=1}^{n-1} p^{k_i}(1-p)^{1-k_i}\right) \times p^{c-\sum_{i=1}^{n-1} k_i} (1-p)^{1-c+\sum_{i=1}^{n-1} k_i}}{{n\choose c}p^c(1-p)^{n-c}}\\ \pause
+  &=\frac{1}{{n\choose c}}.
+ \end{align*}
+ \end{frame}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 5.73
+ \begin{frame}
+ In summary,
+ \[
+ \PP\left(X_1=k_1,\cdots,X_n=k_n \:\big| \: \widehat p = c \right)
+ =\begin{cases}
+   \frac{1}{{n\choose c}} & \text{if $k_i\in\{0,1\}$ s.t. $\sum_{i=1}^n k_i=c$,}\\
+   0 & otherwise.
+  \end{cases}
+ \]
+\vfill \pause
+Hence, by \eqref{E:Sufficency1}, $\widehat p = \sum_{i=1}^n X_i$ is a sufficient estimator for $p$.
+\end{frame}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 5.74
+\begin{frame}
+\begin{enumerate}
+ \item[E.g. 1'.] As in E.g. 1, check sufficiency of $\widehat p$ for $p$ by \eqref{E:Sufficency2}:\\[1em] \pause
+Notice that $p_e=\sum_{i=1}^n k_i$. Then \pause
+ \begin{align*}
+ L( p) = \prod_{i=1}^n p_X(k_i;p) &= \prod_{i=1}^n p^{k_i}(1-p)^{1-k_i}\\ \pause
+ &=p^{\sum_{i=1}^n k_i} (1-p)^{n -\sum_{i=1}^n k_i}\\ \pause
+ &=p^{p_e} (1-p)^{n -p_e}
+%  \\
+%  &= \exp\left(p_e \ln p+ (n-p_e) \ln(1-p)\right)
+\end{align*}
+\pause
+Therefore, $p_e$ (or $\widehat p$) is sufficient since \eqref{E:Sufficency2} is satisfied with
+\[
+g(p_e,p) = p^{p_e} (1-p)^{n -p_e} \quad \text{and}\quad b(k_1,\cdots,k_n) =1.
+\] \pause
+\vfill
+\item[Comment] 1. The estimator $\widehat p$ is sufficient but not unbiased since $\E(\widehat p) = n p \ne p$. \\[0.5em]\pause
+2. Any one-to-one function of a sufficient estimator is again a sufficient estimator. E.g., $\widehat p_2:= \frac{1}{n} \widehat p$, which is a unbiased, sufficient, and MVE. \\[0.5em]\pause
+3. $\widehat p_3:= X_1$ is not sufficient!
+\end{enumerate}
+\end{frame}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 5.75
+\begin{frame}
+ \begin{enumerate}
+  \item[E.g. 2.] Poisson($\lambda$), $p_X(k;\lambda) =e^{-\lambda}\lambda^k/k!$, $k=0,1,\cdots$. Show that $\widehat\lambda=(\sum_{i=1}^n X_i)^2$ is sufficient for $\lambda$ for a sample of size $n$. \pause
+  \vfill
+  Sol: The Corresponding estimate is $\lambda_e=(\sum_{i=1}^n k_i)^2$.\pause
+  \begin{align*}
+   L(\lambda) &= \prod_{i=1}^n \frac{e^{-\lambda}\lambda^{k_i}}{k_i!} \\ \pause
+   & = e^{-n\lambda} \lambda^{\sum_{i=1}^n k_i} \left(\prod_{i=1}^n k_i!\right)^{-1}\\ \pause
+   & = \underbrace{\mystrut{1.3em} e^{-n\lambda} \lambda^{\sqrt{\lambda_e} }}_{g(\lambda_e,\lambda)} \times \underbrace{\left(\prod_{i=1}^n k_i!\right)^{-1}}_{b(k_1,\cdots,k_n)}.
+  \end{align*}\pause
+  Hence, $\widehat\lambda$ is sufficient estimator for $\lambda$.\myEnd
+  \end{enumerate}
+\end{frame}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 5.76
+\begin{frame}
+ \begin{enumerate}
+  \item[E.g. 3.] Let $Y_1,\cdots,Y_n$ be a random sample from $f_Y(y;\theta)=\frac{2y}{\theta^2}$ for $y\in [0,\theta]$. Whether is the MLE $\widehat\theta = Y_{max}$ sufficient for $\theta$? \\[1em] \pause
+  \vfill
+  Sol: The corresponding estimate is $\theta_e= y_{max}$. \pause
+  \begin{align*}
+   L(\theta) = \prod_{i=1}^n \frac{2y}{\theta^2} I_{[0,\theta]}(y_i) &
+   = 2^n\theta^{-2n} \left(\prod_{i=1}^n y_i\right) \times \prod_{i=1}^n I_{[0,\theta]}(y_i)\\ \pause
+   &= 2^n\theta^{-2n} \left(\prod_{i=1}^n y_i\right) \times I_{[0,\theta]}(y_{max})\\  \pause
+   &= \underbrace{\mystrut{1.5em} 2^n\theta^{-2n}I_{[0,\theta]}(\theta_e)}_{=g(\theta_e,\theta)}  \times \underbrace{\prod_{i=1}^n y_i}_{=b(y_1,\cdots,y_k)}.
+  \end{align*} \pause
+  Hence, $\widehat\theta$ is a sufficient estimator for $\theta$.\myEnd
+  \vfill  \pause
+  Note: MME $\widehat\theta = \frac{3}{2}\overline{Y}$ is NOT sufficient for $\theta$!
+  \end{enumerate}
+\end{frame}
+%-------------- end slide -------------------------------%}}}
+

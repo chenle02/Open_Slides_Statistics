@@ -1,0 +1,273 @@
+\mySection{5.5 Minimum-Variance Estimators: The Cram\'er-Rao Lower Bound}
+%-------------- start slide -------------------------------%{{{ 5.57
+\begin{frame}{\S\: 5.5 MVE: The Cram\'er-Rao Lower Bound}
+
+ \hspace{-2em}{\bf Question:~} Can one identify the unbiased estimator having the {\it smallest} variance?
+ \vfill
+ \hspace{-2em}{\bf Short answer:~} In many cases, yes!
+ \vfill
+ \begin{center}
+ We are going to develop the theory to answer this question in details!
+ \end{center}
+
+ \end{frame}
+
+ \begin{frame}
+
+{\bf Regular Estimation/Condition:~} The set of $y$ (resp. $k$) values, where $f_Y(y;\theta)\ne 0$ (resp. $p_X(k;\theta)\ne 0$), does not depend on $\theta$.
+\\[1em]
+i.e., the domain of the pdf does not depend on the parameter (so that one can differentiate under integration).
+ \vfill
+
+ \pause
+ {\bf Definition.~} The {\bf Fisher's Information} of a continous (resp. discrete) random variable $Y$ (resp. $X$) with pdf $f_Y(y;\theta)$ (resp. $p_X(k;\theta)$) is defined as
+ \[
+ I(\theta) = \E\left[\left(\frac{\partial \ln f_Y(Y;\theta)}{\partial \theta}\right)^2\right] \qquad \left(\text{resp.}\quad
+ \E\left[\left(\frac{\partial \ln p_X(X;\theta)}{\partial \theta}\right)^2\right]
+ \right).
+   \]
+
+
+ \end{frame}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 5.58
+ \begin{frame}
+
+ {\bf Lemma.~} Under regular condition, let $Y_1,\cdots,Y_n$ be a random sample of size $n$ from the continuous population pdf $f_Y(y;\theta)$. Then the Fisher Information in the random sample $Y_1,\cdots,Y_n$ equals $n$ times the Fisher information in $X$:
+ \begin{align}\label{E:Fisher1}
+ \E\left[\left(\frac{\partial \ln f_{Y_1,\cdots,Y_n}(Y_1,\cdots,Y_n;\theta)}{\partial \theta}\right)^2\right] = n\:  \E\left[\left(\frac{\partial \ln f_Y(Y;\theta)}{\partial \theta}\right)^2\right] = n \: I(\theta).
+ \end{align}
+ (A similar statement holds for the  discrete case $p_X(k;\theta)$).\\[1em]
+
+ \pause
+ {Proof.~} Based on two observations:
+ \[
+ LHS = \E\left[\left(
+ \sum_{i=1}^n \frac{\partial}{\partial \theta} \ln f_{Y_i}(Y_i;\theta)
+ \right)^2\right]
+ \]
+ \begin{align*}
+ \E\left(\frac{\partial}{\partial \theta} \ln f_{Y_i}(Y_i;\theta)\right)
+&  = \int_\R \frac{\frac{\partial}{\partial \theta}f_Y(y;\theta)}{f_Y(y;\theta)} f_Y(y;\theta)\ud y = \int_\R \frac{\partial}{\partial \theta}f_Y(y;\theta)\ud y \\
+& \stackrel{\text{R.C.}}{=} \frac{\partial}{\partial \theta} \int_\R f_Y(y;\theta)\ud y  = \frac{\partial}{\partial \theta} 1 = 0.
+ \end{align*}
+\myEnd
+ \end{frame}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 5.59
+ \begin{frame}
+
+  {\bf Lemma.~} Under regular condition, if $\ln f_Y(y;\theta)$ is twice differentiable in $\theta$, then
+  \begin{align}\label{E:Fisher2}
+  I(\theta) = -\E\left[\frac{\partial^2}{\partial \theta^2}\ln f_Y(Y;\theta)\right].
+  \end{align}
+(A similar statement holds for the  discrete case $p_X(k;\theta)$).\\[1em]
+
+ \pause
+ {Proof.~} This is due to the two facts:
+ \[
+ \frac{\partial^2}{\partial \theta^2}\ln f_Y(Y;\theta) = \frac{\frac{\partial^2}{\partial \theta^2}f_Y(Y;\theta)}{f_Y(Y;\theta)}
+ -\underbrace{\left(\frac{\frac{\partial}{\partial \theta}f_Y(Y;\theta)}{f_Y(Y;\theta)}\right)^2}_{\displaystyle
+ =\left(\frac{\partial}{\partial \theta} \ln f_Y(Y;\theta)\right)^2}
+ \]
+ \begin{align*}
+ \E\left(\frac{\frac{\partial^2}{\partial \theta^2}f_Y(Y;\theta)}{f_Y(Y;\theta)}\right) &= \int_\R \frac{\frac{\partial^2}{\partial \theta^2}f_Y(y;\theta)}{f_Y(y;\theta)}f_Y(y;\theta) \ud y =
+ \int_\R \frac{\partial^2}{\partial \theta^2}f_Y(y;\theta) \ud y.\\
+ &\stackrel{R.C.}{=} \frac{\partial^2}{\partial \theta^2} \int_\R f_Y(y;\theta) \ud y  = \frac{\partial^2}{\partial \theta^2} 1 = 0.
+ \end{align*}
+ \myEnd
+ \end{frame}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 5.60
+ \begin{frame}
+
+ {\bf Theorem~} (Cram\'er-Rao Inequality)
+ Under regular condition, let $Y_1,\cdots,Y_n$ be a random sample of size $n$ from the continuous population pdf $f_Y(y;\theta)$.
+Let $\widehat{\theta}=\widehat{\theta}(Y_1,\cdots,Y_n)$ be any unbiased estimator for $\theta$. Then
+\[
+\Var(\widehat{\theta})\ge \frac{1}{n\:I(\theta)}.
+\]
+
+ (A similar statement holds for the  discrete case $p_X(k;\theta)$).\\[1em]
+
+ \pause
+ {Proof.~}
+If $n=1$, then by Cauchy-Schwartz inequality,
+ \begin{align*}
+ \E\left[(\widehat{\theta}-\theta) \frac{\partial}{\partial \theta}\ln f_Y(Y;\theta)\right]
+ \le \sqrt{\Var(\widehat{\theta})\times I(\theta)}
+ \end{align*}
+On the other hand,
+\begin{align*}
+\E\left[(\widehat{\theta}-\theta) \frac{\partial}{\partial \theta}\ln f_Y(Y;\theta)\right] &= \int_\R (\widehat{\theta}-\theta) \frac{\frac{\partial}{\partial \theta} f_Y(y;\theta)}{f_Y(y;\theta)} f_Y(y;\theta)\ud y\\
+&= \int_\R (\widehat{\theta}-\theta) \frac{\partial}{\partial \theta} f_Y(y;\theta)\ud y \\
+& =\frac{\partial}{\partial \theta} \underbrace{\int_\R (\widehat{\theta}-\theta)  f_Y(y;\theta)\ud y}_{\displaystyle=\E(\widehat{\theta}-\theta)=0}+1=1.
+\end{align*}
+For general $n$, apply for \eqref{E:Fisher1}. \myEnd.
+\end{frame}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 5.61
+\begin{frame}
+
+{\bf Definition.~} Let $\Theta$ be the set of all estimators $\widehat{\theta}$ that are unbiased for the parameter $\theta$. We say that $\widehat{\theta}^*$ is a {\bf best} or {\bf minimum-variance} esimator (MVE) if $\widehat{\theta}^*\in\Theta$ and
+\[
+\Var(\widehat{\theta}^*) \le \Var(\widehat{\theta})\qquad \text{for all $\widehat{\theta}\in\Theta$}.
+\]
+\vfill
+
+{\bf Definition.~} An unbiased estimator $\widehat{\theta}$ is {\bf efficient} if $\Var(\widehat{\theta})$ is equal to the Cram\'er-Rao lower bound, i.e.,  $\Var{\widehat{\theta}} = \left(n\: I(\theta)\right)^{-1}$.\\
+The {\bf efficiency} of an unbiased estimator $\widehat{\theta}$ is defined to be $\left(n I(\theta) \Var(\widehat{\theta})\right)^{-1}$.
+ \vfill
+ \begin{center}
+\begin{tikzpicture}[fill=gray,scale=1.4]
+\draw[thick,rounded corners] (0,0.15) rectangle (3,2.1);
+\fill[gray!20!background] (1.5,1) ellipse (1.4 and 0.75);
+\draw (1.5,1) ellipse (1.4 and 0.75);
+\fill[red!30!background] (1.2,1) ellipse (0.8 and 0.5);
+\draw (1.2,1) ellipse (0.8 and 0.5);
+\node at (1.3,1.95) {Unbiased estimators $\Theta$};
+\node at (2.4,1) {MVE};
+\node at (1.2,1) {Efficient est.};
+\end{tikzpicture}
+\end{center}
+\end{frame}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 5.62
+\begin{frame}
+\begin{enumerate}
+ \item[E.g. 1.] $X\sim$Bernoulli(p). Check whether $\widehat{p}=\overline{X}$ is efficient?\\[1em]
+ \begin{itemize}
+  \item[Step 1.] Compute Fisher's Information:
+  \[
+ p_X(k;p) = p^k(1-p)^{1-k}.
+ \]\pause
+ \[
+ \ln p_X(k;p) = k\ln p +(1-k)\ln (1-p)
+ \]\pause
+ \[
+ \frac{\partial}{\partial p} \ln p_X(k;p) = \frac{k}{p} -\frac{1-k}{1-p}
+ \]\pause
+ \[
+ -\frac{\partial^2}{\partial^2 p} \ln p_X(k;p) = \frac{k}{p^2} +\frac{1-k}{(1-p)^2}
+ \]\pause
+ \[
+ -\E\left[\frac{\partial^2}{\partial^2 p} \ln p_X(X;p)\right]
+ = \E\left[\frac{X}{p^2} +\frac{1-X}{(1-p)^2}\right]
+ =\frac{1}{p} + \frac{1}{1-p} =\frac{1}{pq}.
+ \]\pause
+ \[
+ \boxed{I(p) = \frac{1}{pq}, \quad q=1-p.}
+ \]
+ \item[Step 2.] Compute $\Var(\widehat{p})$.
+ \[
+ \Var(\widehat{p}) = \frac{1}{n^2}\Var\left(\sum_{i=1}^n X_i\right) = \frac{1}{n^2} n pq = \frac{pq}{n}
+ \]
+ \item[Conclusion] Because $\widehat{p}$ is unbiased and $ \Var(\widehat{p}) = (n I(p))^{-1}$, $\widehat{p}$ is efficient.
+ \end{itemize}
+ \end{enumerate}
+\end{frame}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 5.63
+\begin{frame}
+\begin{enumerate}
+ \item[E.g. 2.] Exponential distr.: $f_Y(y;\lambda)=\lambda e^{-\lambda y}$ for $y\ge 0$. Is $\widehat{\lambda} = 1/\overline{Y}$ efficent?\\[1em]
+ \begin{enumerate}
+  \item[Answer] No, because  $\widehat{\lambda} $ is biased. Nevertheless, we can still compute Fisher's Information as follows
+  \vfill
+  \item[Fisher's Inf.]
+  \[
+ \ln f_Y(y;\lambda) = \ln\lambda -\lambda y
+ \]\pause
+ \[
+ \frac{\partial}{\partial \lambda} \ln f_Y(y;\lambda) = \frac{1}{\lambda} -y
+ \]\pause
+ \[
+ -\frac{\partial^2}{\partial^2 \lambda} \ln f_Y(y;\lambda) = \frac{1}{\lambda^2}
+ \]\pause
+ \[
+ -\E\left[\frac{\partial^2}{\partial^2 \lambda} \ln f_Y(Y;\lambda)\right]
+ = \E\left[\frac{1}{\lambda^2} \right]
+ =\frac{1}{\lambda^2}.
+ \]\pause
+ \vfill
+ \[\boxed{I(\lambda) = \lambda^{-2}}\]
+ \end{enumerate}
+ \vfill
+ \item[Try:] $\widehat\lambda^*:=\frac{n-1}{n}\frac{1}{\overline{Y}}$. It is unbiased. Is it efficient?
+ \end{enumerate}
+\end{frame}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 5.64
+\begin{frame}
+\begin{enumerate}
+ \item[E.g. 2'.] Exponential distr.: $f_Y(y;\theta)=\theta^{-1} e^{-y/\theta}$ for $y\ge 0$.  $\widehat{\theta}=\overline{Y}$ efficent?\\[1em]
+ \begin{itemize}
+  \item[Step. 1.] Compute Fisher's Information:
+  \[
+ \ln f_Y(y;\theta) = -\ln\theta-\frac{y}{\theta}
+ \]\pause
+ \[
+ \frac{\partial}{\partial \theta} \ln f_Y(y;\theta) = -\frac{1}{\theta} +\frac{y}{\theta^2}
+ \]\pause
+ \[
+ -\frac{\partial^2}{\partial^2 \theta} \ln f_Y(y;\theta) = -\frac{1}{\theta^2} + \frac{2y}{\theta^3}
+ \]\pause
+ \[
+ -\E\left[\frac{\partial^2}{\partial^2 \theta} \ln f_Y(Y;\theta)\right]
+ = \E\left[-\frac{1}{\theta^2} + \frac{2Y}{\theta^3}  \right]
+ =-\frac{1}{\theta^2}+ \frac{2\theta}{\theta^3} = \theta^{-2}.
+ \]\pause
+  \[\boxed{I(\theta) = \theta^{-2}}\]
+ \item[Step 2.] Compute $\Var(\widehat{\theta})$:
+ \[
+ \Var(\overline{Y}) = \frac{1}{n^2}\sum_{i=1}^n \Var(Y_i) =  \frac{1}{n^2} n \theta^2 = \frac{\theta^2}{n}.
+ \]
+ \item[Conclusion.] Because $\widehat{\theta}$ is unbiased  and $ \Var(\widehat{p}) = (n I(p))^{-1}$, $\widehat{\theta}$ is efficient.
+ \end{itemize}
+\end{enumerate}
+\end{frame}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 5.65
+\begin{frame}[label=current]
+
+\begin{enumerate}
+ \item[E.g. 3.] $f_Y(y;\theta)=2y/\theta^2$ for $y\in [0,\theta]$.  $\widehat{\theta}=\frac32\overline{Y}$ efficent?\\[1em]
+ \begin{itemize}
+  \item[Step. 1.] Compute Fisher's Information:
+  \[
+ \ln f_Y(y;\theta) = \ln (2y)-2\ln\theta
+ \]\pause
+ \[
+ \frac{\partial}{\partial \theta} \ln f_Y(y;\theta) = -\frac{2}{\theta}
+ \]\pause
+ By the definition of Fisher's information,
+ \[
+ I(\theta) = \E\left[\left(\frac{\partial}{\partial \theta} \ln f_Y(y;\theta) \right)^2\right]=
+ \E\left[\left( - \frac{2}{\theta}  \right)^2\right]= \frac{4}{\theta^2}.
+ \] \pause
+ However, if we compute
+ \[
+ -\frac{\partial^2}{\partial^2 \theta} \ln f_Y(y;\theta) = -\frac{2}{\theta^2}
+ \]\pause
+ \begin{align}\tag{$\dagger$}
+ -\E\left[\frac{\partial^2}{\partial^2 \theta} \ln f_Y(Y;\theta)\right]
+ = \E\left[-\frac{2}{\theta^2} \right]
+ =-\frac{2}{\theta^2} \ne
+\frac{4}{\theta^2} = I(\theta) .
+ \end{align}
+\pause
+ \item[Step 2.] Compute $\Var(\widehat{\theta})$:
+ \[
+ \Var(\widehat\theta) = \frac{9}{4n}\Var(Y) =  \frac{9}{4 n} \frac{\theta^2}{18} = \frac{\theta^2}{8n}.
+ \]
+ \item[Discussion.] Even though $\widehat\theta$ is unbiased, we have two discripencies: ($\dagger$)  and
+ \[
+ \Var(\widehat\theta)= \frac{\theta^2}{8n} \le \frac{\theta^2}{4n} = \frac{1}{n I(\theta)}
+ \]\pause
+ This is because this is not a regular estimation!
+ \end{itemize}
+\end{enumerate}
+
+
+\end{frame}
+%-------------- end slide -------------------------------%}}}
