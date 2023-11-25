@@ -1,6 +1,6 @@
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10206720.svg)](https://doi.org/10.5281/zenodo.10206720)
 
-# Open slides (with Latex source codes) for Statistics
+# Statistics: Open slides
 1. In this repo, we share the slides for the course "Math 362 -- Mathematical Statistics II"
    in the Department of Mathematics, Emory University, taught by me in 2021 Spring.
 2. This second part of the sequence of probability and statistics course that covers
@@ -22,7 +22,7 @@
 ```
 @misc{chen:23:statistics,
   author        = {Le Chen},
-  title         = {Statistics: open slides},
+  title         = {Statistics: Open Slides},
   month         = {nov},
   year          = {2023},
   publisher     = {GitHub \& Zenodo},
