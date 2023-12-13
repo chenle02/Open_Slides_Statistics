@@ -14,4 +14,4 @@ then
 fi
 
 
-pdftoppm -png -f 1 -r 600 -singlefile ../slides/Chapter-7.pdf Cover
+pdftoppm -png -f 1 -r 600 -singlefile ../slides/Chapter-7.pdf Open_slides_statistics.png

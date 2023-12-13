@@ -1,6 +1,6 @@
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10206720.svg)](https://doi.org/10.5281/zenodo.10206720)
 
-![Statistics: Open Slides](./media/Cover.png)
+![Statistics: Open Slides](./media/Open_slides_statistics.png)
 
 # Statistics: Open slides
 1. In this repo, we share the slides for the course "Math 362 -- Mathematical Statistics II"
